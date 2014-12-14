@@ -1,4 +1,4 @@
-title: User Event-Driven with javascript
+title: Use Event-Driven with javascript
 date: 2014-12-14 18:58:56
 tags:
 ---
@@ -38,7 +38,7 @@ var MyEvents = {
     NodeMoved: 'myEvent_NodeMoved'
 }
 ```
-Once we add a custome event, we should add a member to this object.
+Once we add a custom event, we should add a member to this object.
 
 **Subscribe events at right place, usually in initialize method of a module:**
 ```javascript
