@@ -62,7 +62,7 @@ CodeTimer.Time("for loop string", 10, () =>
 运行结果如图：
 ![foreach](/img/foreach.png)
 
-从结果中很容易得出**结论**，三种遍历，无论是对值类型还是应用类型，都是for-loop更高效。
+从结果中很容易得出**结论**，三种遍历，无论是对值类型还是引用类型，都是for-loop更高效。
 
 ## 原因
 
