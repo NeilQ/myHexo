@@ -58,7 +58,6 @@ CodeTimer.Time("for loop string", 10, () =>
     {
     }
 });
-
 ```
 运行结果如图：
 ![foreach](/img/foreach.png)
