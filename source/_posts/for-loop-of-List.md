@@ -6,7 +6,7 @@ tags:
 
 最近对.NET项目进行性能优化，在开启编译器优化的前提下，对List<T>对象遍历的不同方式进行了简单的研究和对比，以此记录。
 首先我们创建两个不同类型的List对象，各自塞了5000000个简单元素：
-```c#
+```csharp
 var listInt = new List<int>();
 var listString = new List<String>();
 for (var i = 0; i < 5000000; i++)
@@ -16,7 +16,7 @@ for (var i = 0; i < 5000000; i++)
 }
 ```
 在此我们分别通过foreach, for-loop, 和List<T>.ForEach方法对他们分别进行遍历:
-```c#
+```csharp
 CodeTimer.Time("foreach int", 10, () =>
 {
     foreach (var item in listInt)
@@ -72,7 +72,7 @@ CodeTimer.Time("for loop string", 10, () =>
 > * 每次迭代时给Current成员赋值
 
 接着我们看看List<T>.ForEach的源码：
-```c#
+```csharp
 public void ForEach(Action<T> action) {
     if( action == null) {
         ThrowHelper.ThrowArgumentNullException(ExceptionArgument.match);
