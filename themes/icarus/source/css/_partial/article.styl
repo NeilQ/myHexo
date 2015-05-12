@@ -322,3 +322,45 @@ $article-share-link
     display: block
     max-width: 100%
     margin: 0 auto
+
+.article-inner
+  overflow: hidden
+.article-row
+  clearfix();
+  width: 100%
+  float: left
+  position: relative
+  padding: 30px 0px 0px 30px
+  border-bottom: 1px solid #eee
+  box-sizing: border-box
+.article-summary
+  margin-bottom: 3px
+  padding: 20px
+  background: white
+  box-shadow: 3px 3px 10px #888
+  a
+    text-decoration: none
+    color: color-link
+  .article-summary-inner
+    margin-right: 30px
+    .article-title
+      margin-bottom: 10px
+      font-size: 22px
+      font-weight: 400
+      line-height: 1.5em
+      word-wrap: break-word
+      a
+        transition: color 0.3s ease-in
+        color: #444
+    .article-excerpt
+      position: relative
+      color: rgb(170, 170, 170)
+      font-size: 16px
+      line-height: line-height
+      overflow: hidden
+      height: 4 * line-height
+  &:hover
+    .article-title
+      a
+        color: color-link
+

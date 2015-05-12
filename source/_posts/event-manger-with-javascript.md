@@ -1,6 +1,9 @@
 title: Use Event-Driven with javascript
 date: 2014-12-14 18:58:56
 tags:
+- JavaScript
+categories:
+- JavaScript
 ---
 
 Let me recommend using publish-subscribe pattern to refactor JavaScvript codes in Web development, base on Javascript Event Driven.

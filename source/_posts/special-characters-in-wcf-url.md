@@ -1,6 +1,9 @@
 title: 在WCF Uri中使用特殊字符
 date: 2014-10-22 19:48:56
 tags:
+- WCF
+categories:
+- .NET
 ---
 
 当我们在iis中部署wcf时，我们会因为各种原因遇到无法在url的schema中使用一些特殊字符：

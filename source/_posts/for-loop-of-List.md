@@ -1,6 +1,8 @@
 title: .NET性能之遍历List<T>
 date: 2015-02-14 17:15:15
 tags:
+categories:
+- .NET
 ---
 
 

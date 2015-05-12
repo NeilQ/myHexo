@@ -1,6 +1,8 @@
 title: Python Web框架选择小记
 date: 2015-04-08 20:44:09
 tags:
+categories:
+- Python
 ---
 
 前段时间用python flask写了个Markdown blog，初始选择平台及框架的时候，着实纠结了一番。今偶有所感，特此记录。
