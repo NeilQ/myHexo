@@ -67,7 +67,7 @@ using (SqlCommand command = new SqlCommand("dbo.usp_Insert_People", conn))
     // column为"Name","Description"。
     SqlParameter parameter = command.Parameters.AddWithValue("@Peoples", peopleList.ToDataTable());
     parameter.SqlDbType = SqlDbType.Structured;
-    parameter.TypeName = "udt_StaxUriTable";
+    parameter.TypeName = "udt_PeopleTable";
     command.ExecuteNonQuery();
 }
 ```
