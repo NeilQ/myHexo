@@ -13,19 +13,19 @@ fancybox: true
 sidebar: right
 widgets:
 - recent_posts
-- category
-- tag
 - tagcloud
-- archive
-thumbnail: true
+- category
+#- tag
+#- archive
+thumbnail: false
 
 # Contacts
 contacts:
   github: https://github.com/NeilQ
-  twitter: '#'
-  facebook: '#'
-  dribbble: '#'
-  rss: /atom.xml
+ # twitter: '#'
+ # facebook: '#'
+ # dribbble: '#'
+ # rss: /atom.xml
 
 # Links
 links:
