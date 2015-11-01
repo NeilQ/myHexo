@@ -23,8 +23,8 @@ categories:
 在介绍如何利用Unity实现切面拦截之前，我们先看一下有哪些其他的实现方式。装饰者模式和AOP编程就是常见的拦截横切点的编程方式。
 
 #装饰者模式
-装饰者模式可以为我们的现有代码创建一个外壳，来处理横切关系。假设我们有一个**TanantStore**类负责tanant实体的数据存储，我们来演示下怎么利用装饰者模式，在不修改或扩展TanantStore代码的前提下，处理日志记录和缓存处理横切关系。
-以下代码为TanantStore类和ITanantStore接口：
+装饰者模式可以为我们的现有代码创建一个外壳，来处理横切关系。假设我们有一个**TenantStore**类负责tenant实体的数据存储，我们来演示下怎么利用装饰者模式，在不修改或扩展**TenantStore**代码的前提下，处理日志记录和缓存处理横切关系。
+以下代码为**TenantStore**类和**ITenantStore**接口：
 ```csharp
 public interface ITenantStore
 {
@@ -96,7 +96,7 @@ var loggingTenantStore = new LoggingTenantStore(basicTenantStore, logger);
 var cachingAndLoggingTenantStore = new CachingTenantStore(loggingTenantStore, cache);
 ```
 
-假如我们调用cachingAndLoggingTenantStore**对象的**UploadLogo**方法，就会先调用**CachingTenantStore**类的**UploadLogo**方法并追溯到**LoggingTenantStore**类的**UploadLogo**方法，最终追溯到调用**TenantStore**类的**UploadLogo**方法。
+假如我们调用**cachingAndLoggingTenantStore**对象的**UploadLogo**方法，就会先调用**CachingTenantStore**类的**UploadLogo**方法并追溯到**LoggingTenantStore**类的**UploadLogo**方法，最终追溯到调用**TenantStore**类的**UploadLogo**方法。
 ![decorator](/img/decorator pattern at run time.png)
 
 #用Unity连接装饰器链
