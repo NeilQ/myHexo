@@ -46,7 +46,7 @@ public TenantStore()
 }
 ```
 
-以下代码展示了一个为**TanantStore**添加了日志记录功能的装饰器:
+以下代码展示了一个为**TenantStore**添加了日志记录功能的装饰器:
 ```csharp
 class LoggingTenantStore : ITenantStore
 {
@@ -88,8 +88,8 @@ class LoggingTenantStore : ITenantStore
 }
 ```
 
-注意到这个装饰器类实现了**ITanantStore**接口，并在构造器中加了**ITenantStore**实例的参数。在每个方法体中，它在记录日志之前调用了原接口的方法。当然，我们可以灵活的改变记录日志的位置，不管是在调用原方法之前或者之后。
-假如我们有另一个装饰器类**CachingTanantStore**实现了**ITenantStore**接口，我们就可以同时处理日志和缓存功能：
+注意到这个装饰器类实现了**ITenantStore**接口，并在构造器中加了**ITenantStore**实例的参数。在每个方法体中，它在记录日志之前调用了原接口的方法。当然，我们可以灵活的改变记录日志的位置，不管是在调用原方法之前或者之后。
+假如我们有另一个装饰器类**CachingTenantStore**实现了**ITenantStore**接口，我们就可以同时处理日志和缓存功能：
 ```csharp
 var basicTenantStore = new TenantStore(tenantContainer, blobContainer);
 var loggingTenantStore = new LoggingTenantStore(basicTenantStore, logger);
