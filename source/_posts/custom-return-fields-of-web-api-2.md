@@ -35,7 +35,7 @@ public class Bar
 ```csharp
 public class ExpandoMapper : IExpandoMapper
 {
-    public ExpandoObject Map(string fields, Type t, object entity)
+    public ExpandoObject Map<T>(string fields, T entity)
     {
         var fieldHash = Utils.SplitCommaHash(fields);
         if (fieldHash == null || fieldHash.Count == 0)
@@ -43,7 +43,7 @@ public class ExpandoMapper : IExpandoMapper
             return null;
         }
 
-        var props = t.GetProperties();
+        var props = typeof(T).GetProperties();
         var comparable = new IgnoreCaseStringCompare();
 
         var expando = new ExpandoObject();
@@ -59,7 +59,7 @@ public class ExpandoMapper : IExpandoMapper
         return expando;
     }
 
-    public List<ExpandoObject> Map(string fields, Type t, IList<object> entity)
+    public List<ExpandoObject> MapList<T>(string fields, IList<T> entities)
     {
         var fieldHash = Utils.SplitCommaHash(fields);
         if (fieldHash == null || fieldHash.Count == 0)
@@ -67,20 +67,21 @@ public class ExpandoMapper : IExpandoMapper
             return null;
         }
 
-        var props = t.GetProperties();
+        var props = typeof(T).GetProperties();
         var comparable = new IgnoreCaseStringCompare();
 
         var list = new List<ExpandoObject>();
-        for (var i = 0; i < entity.Count; i++)
+        for (var i = 0; i < entities.Count; i++)
         {
             var expando = new ExpandoObject();
             var dictionary = (IDictionary<string, object>)expando;
 
             for (var j = 0; j < props.Length; j++)
             {
-                if (fieldHash.Contains(props[i].Name, comparable))
+                var prop = props[j];
+                if (fieldHash.Contains(prop.Name, comparable))
                 {
-                    dictionary.Add(props[i].Name, props[i].GetValue(entity));
+                    dictionary.Add(prop.Name, prop.GetValue(entities[i]));
                 }
             }
             list.Add(expando);
@@ -108,7 +109,7 @@ public IHttpActionResult Get(string fields = "")
     };
 
     var mapper = new ExpandoMapper();
-    var obj = mapper.Map(fields, typeof(Foo), value);
+    var obj = mapper.Map(fields, value);
 
     return Ok(obj);
 }
