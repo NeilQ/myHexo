@@ -134,7 +134,7 @@ class CachingInterceptionBehavior : IInterceptionBehavior
 同样地，该行为在调用了下一个拦截行为之后过滤出**SaveTenant**方法 ，并把tenant对象的副本放入了缓存中。
 >这里我们简单地过滤出方法名称，后面我们将展示如何利用策略配置来聪明地做到这一点。
 
-#注册拦截器
+# 注册拦截器
 在完成了**CachingIntercptionBehavior**，**LoggingInterceptionBehavior**之后，我们需要将其注册到Unity容器：
 ```csharp
 using Microsoft.Practices.Unity.InterceptionExtension;
