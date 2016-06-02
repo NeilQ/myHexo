@@ -7,7 +7,7 @@ categories:
 - .NET
 ---
 
-#前言
+# 前言
 [上一篇文章里](http://neilq.github.io/2015/10/31/AOP-programming-with-Unity-1/)，我们介绍了Unity拦截器的基本概念，本编文章我们将利用它来进行实战。
 
 # 在Unity Container中配置
@@ -20,7 +20,7 @@ IUnityContainer container = new UnityContainer();
 container.AddNewExtension<Interception>();
 ```
 
-#定义拦截器
+# 定义拦截器
 上篇文章，我们用装饰器模式实现了logging和caching两种横切关系，而在这里，我们通过实现**IInterceptionBehavior**接口来实现拦截。
 ```csharp
 using Microsoft.Practices.Unity.InterceptionExtension;
@@ -153,13 +153,13 @@ container.RegisterType<ITenantStore, TenantStore>(
 
 拦截行为的注册顺序将决定它们在管道中的执行顺序。在该示例中，我们一定不能把顺序弄错，因为当caching拦截行为在缓存中找到tenant后，就不把客户对象的调用请求传递给下一个拦截行为了，假如搞错了顺序且在缓存中找到了tenant，你就不会记录日志了。
 
-#使用拦截器
+# 使用拦截器
 最后一步就是如何在运行时使用拦截器了，很简单，我们只需要调用相关方法就行了，logging和caching拦截将会自动附加上去:
-```
+```csharp
 var tenantStore = container.Resolve<ITenantStore>();
 tenantStore.SaveTenant(tenant);
 ```
 要注意的是，上述**tanantStore**变量并非是**TenantStore**类型的，而是一个动态创建、实现了**ITenantStore**接口的**代理对象**，这个代理对象包含了**ITenantStore**接口定义的方法、属性和事件。上一篇文章的**实例拦截**介绍了这一点。
 
-#总结
+# 总结
 这篇文章向大家介绍了Unity拦截器在项目中基础的类型拦截实战，下篇文章将给大家介绍其他更加灵活的拦截方式。

@@ -6,7 +6,7 @@ categories:
 - DataBase
 ---
 
-#安装并开启
+# 安装并开启
 执行命令：
 ```
 sudo yum install mysql-server
@@ -17,7 +17,7 @@ sudo /sbin/service mysqld start
 sudo /usr/bin/mysql_secure_installation
 ```
 
-#设置iptables以启用远程登陆
+# 设置iptables以启用远程登陆
 执行命令：
 ```
 iptables -A INPUT -p tcp --dport 3306 -m state --state NEW,ESTABLISHED -j ACCEPT
@@ -27,13 +27,13 @@ iptables -A OUTPUT -p tcp --sport 3306 -m state --state ESTABLISHED -j ACCEPT
 service iptables restart
 ```
 
-#设置开机启动
+# 设置开机启动
 ```
 sudo chkconfig mysqld on
 sudo chkconfig iptables on
 ```
 
-#配置远程登陆账号
+# 配置远程登陆账号
 运行mysql shell
 ```
 mysql -u root -p
