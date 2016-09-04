@@ -103,4 +103,3 @@
     $(document).scrollTop(0);
   });
 
-})(jQuery);
