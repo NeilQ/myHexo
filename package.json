@@ -6,6 +6,7 @@
     "version": "3.2.2"
   },
   "dependencies": {
+    "cnpm": "^4.3.2",
     "hexo": "^3.0.1",
     "hexo-admin": "^2.0.1",
     "hexo-deployer-git": "0.0.4",
