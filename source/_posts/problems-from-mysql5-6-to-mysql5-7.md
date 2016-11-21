@@ -6,7 +6,7 @@ categories:
 - DataBase
 ---
 
-最近从MySql5.6升级到5.7版本，踩到一些吭，在此记录。
+最近从MySql5.6升级到5.7版本，踩到一些坑，在此记录。
 
 ## sql_mode=ONLY_FULL_GROUP_BY
 项目中某些sql报错
