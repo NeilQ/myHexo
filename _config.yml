@@ -93,5 +93,5 @@ duoshuo_shortname: neilq
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: https://github.com/NeilQ/NeilQ.github.io.git
+  repository: git@github.com:NeilQ/NeilQ.github.io.git
   branch: master
