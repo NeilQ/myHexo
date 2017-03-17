@@ -30,7 +30,7 @@ public class Bar
 
 那么，我们怎样去实现这一功能呢？诶对了，[ExpendoObject](https://msdn.microsoft.com/en-us/library/system.dynamic.expandoobject.aspx)和反射。
 
-###代码实现
+### 代码实现
 实现思路很简单，首先，我们需要调用者传来一个query string，比如"fields=a,b"，通过逗号分割字符串提取出自定义的字段。然后我们将其与Foo中反射得到的属性匹配，组成ExpandoObject对象，将其返回。下面展示一个实现代码：
 ```csharp
 public class ExpandoMapper : IExpandoMapper
@@ -120,7 +120,7 @@ public IHttpActionResult Get(string fields = "")
 
 另外要注意的是，这里我们在api中直接声明**ExpandoMapper**对象，但我更建议大家将其接口化，注入到**controller**中，方便后期优化。
 
-###性能优化想法
+### 性能优化想法
 从上面的代码中可以看出，我们在每次映射对象时都对源类进行了属性反射，当请求量达到一定级别，必然会影响到性能。因此后期打算将类反射后的属性缓存起来，这样只需在启动时反射一次，将性能开销降到最低。
 细心的朋友会发现，以上想法在实体对象不多的情况下是可行的。当项目中实体对象量大时，过多的缓存又会提高内存占用。假如达到某个数量级别，我的想法是使用[LRU cache(最近最少使用缓存)策略](https://en.wikipedia.org/wiki/Cache_algorithms)来优化。
 当然，**抛开剂量谈伤害都是耍流氓**，今天暂且研究到这里，把时间放在更重要的地方，假如后期有这方面的代码实现，我再来更新。

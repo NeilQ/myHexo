@@ -7,7 +7,7 @@ categories:
 - .NET
 ---
 
-web api 2 中, 假如返回对象加了[serializable]特性，返回的json、xml数据都是包含对象的私有变量，而非共有属性，如：
+web api 2 中, 假如返回对象加了[serializable]特性，返回的json、xml数据都是包含对象的私有变量，而非公有属性，如：
 ```json
 {
   "Total": 1,
