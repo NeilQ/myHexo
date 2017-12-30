@@ -7,7 +7,7 @@ tags:
 ---
 
 ## 介绍 & 安装
-关于Docker的介绍与安装，这里就不再细写，请利用搜索引擎，或者参考[What is docker](https://www.docker.com/whatisdocker), [安装手册](https://docs.docker.com/installation/)。
+关于Docker的介绍与安装，这里就不再细写，请利用搜索引擎，或者参考[What is docker](https://www.docker.com/whatisdocker), [安装手册](https://docs.docker.com/engine/installation/)。
 为了方便，我直接在DigitalOcrean部署了一个docker环境。
 
 ## 获取应用代码
