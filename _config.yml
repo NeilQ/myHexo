@@ -86,9 +86,6 @@ disqus_shortname:
 theme: icarus
 exclude_generator:
 
-# DuoShuo
-duoshuo_shortname: neilq
-
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
