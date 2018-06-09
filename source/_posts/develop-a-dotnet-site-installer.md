@@ -48,7 +48,7 @@ await this.execCommand(`${binPath}\\psql -h 127.0.0.1 -p 5433 -U postgres -c "al
 `this.execCommand`是我根据node模块`child_process.exec`封装的方法，这里有个trick，我后面再讲。
 
 ## 设置环境变量PATH
-这一步骤需要将postgresql的bin目录添加到环境变量Path中，花了我很多时间，起初我搜到的方案是使用`setx`命令，但是`setx`命令有个局限性，最大只能有1024个字符，超出部分或被截断丢失，这显然是不行的。
+这一步骤需要将postgresql的bin目录添加到环境变量Path中，花了我很多时间，起初我搜到的方案是使用`setx`命令，但是`setx`命令有个局限性，最大只能有1024个字符，超出部分会被截断丢失，这显然是不行的。
 
 接着我搜索得知，windows环境变量保存再注册表键`HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment`中，于是我尝试使用win32 api直接改注册表。实际操作过程中，发现需要使用`node-gyp`编译原生模块，而要让`node-gyp`工作，在windows上需要c++ vsbuild环境，费了很大力气终于成功，但是使用`electron-rebuild`编译时又出现了问题，于是我想，就算解决了，以后换个环境，或者其他人维护这个项目，又得浪费一番时间，于是我放弃了继续研究。
 
