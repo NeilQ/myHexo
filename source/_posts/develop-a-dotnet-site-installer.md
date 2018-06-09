@@ -184,7 +184,7 @@ await this.execCommand([
 await this.execCommand('%systemroot%\\system32\\inetsrv\\APPCMD set app "parking-admin-prod/" /applicationPool:parking-admin-prod');
 ```
 
-以上代码没有修改站点绑定的ip，是由于我细节上还没开发完，大家注意以下就可以了。
+以上代码没有修改站点绑定的ip，是由于我细节上还没开发完，大家注意一下就可以了。
 
 ## 安装注册表
 我们在安装软件后，再次打开安装器，需要判断系统是否已经安装，同时，在控制面板的程序和功能中，需要有所体现，并且让用户选择卸载。这些信息也是配置在注册表中的，其中涉及到两个注册表项，`HKLM\Software\[AppName]`与`HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\[app name]`，前面已经介绍了注册表的操作，这里就不再贴代码了。
