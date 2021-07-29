@@ -90,5 +90,5 @@ exclude_generator:
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: git@github.com:NeilQ/NeilQ.github.io.git
+  repository: https://github.com/NeilQ/NeilQ.github.io.git
   branch: master
