@@ -66,14 +66,14 @@ public interface IMessageHandler
     public Task Handle(MqttMessage message);
 }
 
-public interface HeartbeatHandler: IMessageHandler
+public class HeartbeatHandler: IMessageHandler
 {
     public Task Handle(MqttMessage message){
         // 处理心跳包业务
     }
 }
 
-public interface RecognizeHandler: IMessageHandler
+public class RecognizeHandler: IMessageHandler
 {
     public Task Handle(MqttMessage message){
         // 处理人脸识别结果业务
@@ -89,6 +89,7 @@ public interface RecognizeHandler: IMessageHandler
 private Task HandleReceivedMessage(MqttApplicationMessageReceivedEventArgs e){
     // 处理消息内容
     var topic = e.ApplicationMessage.Topic;
+    var message = Encoding.UTF8.GetString(e.ApplicationMessage.Payload);
     IMessageHandler handler;
     if(topic.EndsWith("heatbeat")){
         // 处理心跳包业务
@@ -110,7 +111,7 @@ private Task HandleReceivedMessage(MqttApplicationMessageReceivedEventArgs e){
         // 处理设备指令回复业务
          handler = new AckHandler();
     }
-    handler.Handler();
+    handler.Handle(new MqttMessage(topic, message));
 }
 
 ```
@@ -155,8 +156,9 @@ private readonly MessageHandlerFactory _handlerFactory = new MessageHandlerFacto
 private Task HandleReceivedMessage(MqttApplicationMessageReceivedEventArgs e){
     // 处理消息内容
     var topic = e.ApplicationMessage.Topic;
+    var message = Encoding.UTF8.GetString(e.ApplicationMessage.Payload);
     IMessageHandler handler = _handlerFactory.CreateHandler(topic);
-    handler.Handler();
+    handler.Handle(new MqttMessage(topic, message));
 }
 ```
 
@@ -177,10 +179,10 @@ public class TopicEndWithAttribute : Attribute
 
 ```
 
-这里我们只创建了简单TopicEndWith特性，对于复杂一些的消息分类，我们也可以干脆正则表达式来实现，现在让把特性给Handler装上：
+这里我们只创建了简单TopicEndWith特性，对于复杂一些的消息分类，我们也可以干脆正则表达式来实现，现在把特性给Handler装上：
 ```csharp
 [TopicEndWith("heartbeat")]
-public interface HeartbeatHandler: IMessageHandler
+public calss HeartbeatHandler: IMessageHandler
 {
     public Task Handle(MqttMessage message){
         // 处理心跳包业务
@@ -221,7 +223,7 @@ public class MqttMessageHandlerFactory
         }
     }
 
-    public IMqttMessageHandler CreateHandler(string topic)
+    public IMessageHandler CreateHandler(string topic)
     {
         var reg = new Regex(".*face/.+/.+");
         if (!reg.IsMatch(topic)) return null;
